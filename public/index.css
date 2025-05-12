@@ -1,0 +1,484 @@
+/* Navbar Styling */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ffffff;
+  padding: 5px 40px;
+  border-bottom: 2px solid #ff6a00;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo {
+  width: 90px;
+  height: auto;
+}
+
+.nav-items > ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-items > ul > li {
+  font-size: 24px;
+  margin: 0 15px;
+  font-weight: 500;
+  color: #333;
+  cursor: pointer;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.nav-items > ul > li:hover {
+  color: #ff6a00;
+}
+
+.nav-items > ul > li::after {
+  content: "";
+  display: block;
+  height: 3px;
+  background: #ff6a00;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+  transform-origin: left;
+  margin-top: 4px;
+}
+
+.nav-items > ul > li:hover::after {
+  transform: scaleX(1);
+}
+
+/* body */
+
+/* =================newCard */
+/* .body {
+  background-color: #f4f4f4;
+  box-sizing: border-box;
+} */
+
+/* Filter section layout */
+.filter {
+  padding: 20px 60px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-bottom: 30px;
+  gap: 20px;
+}
+
+/* Search box and button */
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.search-box {
+  padding: 10px 15px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 250px;
+  max-width: 100%;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+  outline: none;
+  transition: border 0.3s ease;
+}
+
+.search-box:focus {
+  border-color: #ff6a00;
+}
+
+/* Button base style */
+.search-btn,
+.filter-btn {
+  padding: 10px 16px;
+  background-color: #ff6a00;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.search-btn:hover,
+.filter-btn:hover {
+  background-color: #e95c00;
+  transform: translateY(-1px);
+}
+
+.search-btn:active,
+.filter-btn:active {
+  transform: scale(0.98);
+}
+
+/* Old */
+/* .filter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  gap: 20px;
+}
+
+.filter > .filter-btn {
+  margin-top: 10px;
+  padding: 5px 8px;
+  background-color: #e4833e;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 15px;
+  font-weight: bold;
+  width: 150px;
+} */
+
+.res-container {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start; /* Align top for even layout */
+  padding: 10px 60px;
+  background-color: #f4f4f4;
+  gap: 30px;
+  /* overflow: hidden; */
+}
+
+.res-card {
+  width: 230px;
+  height: 350px; /* Fixed height */
+  background-color: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* padding: 20px; */
+  /* border: 1px solid #ccc; */
+  /* box-sizing: border-box; */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  text-align: center;
+}
+
+.res-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+  /* transition: transform 0.3s ease; */
+  /* transform: scale(0.95); */
+}
+
+.res-logo {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  /* margin-bottom: 10px; */
+}
+
+.res-card h3,
+.res-card p {
+  margin: 4px 0;
+  font-size: 18px;
+}
+
+/* =====================Old below*/
+
+/* .res-container {
+  margin-top: 50px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  background-color: #f9f9f9;
+  gap: 30px;
+  overflow: hidden;
+}
+
+.res-card {
+  padding: 20px;
+  width: 200px;
+  height: 290px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+}
+
+.res-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease;
+  transform: scale(0.95);
+}
+
+.res-logo {
+  width: 190px;
+  height: 120px;
+  padding: 5px;
+} */
+
+/* Loader */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+}
+
+.loading h1 {
+  font-size: 2rem;
+  color: #ff6a00;
+  display: flex;
+}
+
+.loading h1 span {
+  display: inline-block;
+  animation: wave 1.3s infinite;
+}
+
+.loading h1 span:nth-child(1) {
+  animation-delay: 0s;
+}
+.loading h1 span:nth-child(2) {
+  animation-delay: 0.1s;
+}
+.loading h1 span:nth-child(3) {
+  animation-delay: 0.2s;
+}
+.loading h1 span:nth-child(4) {
+  animation-delay: 0.3s;
+}
+.loading h1 span:nth-child(5) {
+  animation-delay: 0.4s;
+}
+.loading h1 span:nth-child(6) {
+  animation-delay: 0.5s;
+}
+.loading h1 span:nth-child(7) {
+  animation-delay: 0.6s;
+}
+.loading h1 span:nth-child(8) {
+  animation-delay: 0.7s;
+}
+.loading h1 span:nth-child(9) {
+  animation-delay: 0.8s;
+}
+
+@keyframes wave {
+  0%,
+  60%,
+  100% {
+    transform: translateY(0);
+  }
+  30% {
+    transform: translateY(-10px);
+  }
+}
+
+/* Shimmer UI */
+.shimmer-container {
+  margin-top: 160px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  padding: 10px 60px;
+}
+
+.shimmer-cards {
+  width: 230px;
+  height: 350px;
+  border-radius: 12px;
+  background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+  background-size: 1200px 100%;
+  animation: shimmer 1.2s infinite linear;
+  position: relative;
+}
+
+/* Optional: Text Placeholder */
+.shimmer-cards::after {
+  content: " ";
+  display: block;
+  height: 20px;
+  margin: 10px 20px;
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1200px 0;
+  }
+  100% {
+    background-position: 1200px 0;
+  }
+}
+
+/* ===================== Fully Responsive Layout ===================== */
+
+/* Large desktops and laptops (1440px and below) */
+@media (max-width: 1440px) {
+  .res-container {
+    padding: 10px 40px;
+  }
+
+  .res-card {
+    width: 220px;
+  }
+
+  .shimmer-container {
+    padding: 10px 40px;
+  }
+
+  .shimmer-cards {
+    width: 220px;
+  }
+}
+
+/* Standard desktops (1024px and below) */
+@media (max-width: 1024px) {
+  .res-container {
+    padding: 10px 30px;
+    justify-content: center;
+  }
+
+  .res-card {
+    width: 220px;
+  }
+
+  .nav-items > ul {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .shimmer-container {
+    padding: 10px 30px;
+    justify-content: center;
+  }
+
+  .shimmer-cards {
+    width: 220px;
+  }
+}
+
+/* Tablets (768px and below) */
+@media (max-width: 768px) {
+  .header {
+    padding: 10px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .nav-items > ul {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+
+  .nav-items > ul > li {
+    font-size: 20px;
+    margin: 5px 10px;
+  }
+
+  .res-container {
+    padding: 10px 20px;
+    justify-content: center;
+  }
+
+  .res-card {
+    width: 45%;
+    height: auto;
+    min-height: 320px;
+  }
+
+  .shimmer-container {
+    padding: 10px 20px;
+  }
+
+  .shimmer-cards {
+    width: 45%;
+  }
+
+  .filter > .filter-btn {
+    width: 100%;
+  }
+}
+
+/* Large phones & phablets (600px and below) */
+@media (max-width: 600px) {
+  .res-card {
+    width: 100%;
+  }
+
+  .shimmer-cards {
+    width: 100%;
+  }
+
+  .res-logo {
+    height: 160px;
+  }
+
+  .res-card h3,
+  .res-card p {
+    font-size: 16px;
+  }
+
+  .filter > .filter-btn {
+    font-size: 18px;
+    width: 100%;
+  }
+}
+
+/* Small phones (480px and below) */
+@media (max-width: 480px) {
+  .header {
+    padding: 8px 15px;
+  }
+
+  .logo {
+    width: 65px;
+  }
+
+  .nav-items > ul > li {
+    font-size: 16px;
+    margin: 4px 6px;
+  }
+
+  .res-container {
+    padding: 10px;
+    gap: 20px;
+  }
+
+  .res-card {
+    width: 100%;
+    min-height: 300px;
+  }
+
+  .shimmer-container {
+    padding: 10px;
+    gap: 20px;
+  }
+
+  .shimmer-cards {
+    width: 100%;
+  }
+
+  .filter > .filter-btn {
+    font-size: 16px;
+    width: 100%;
+  }
+}
