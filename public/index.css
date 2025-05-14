@@ -154,6 +154,10 @@
   gap: 30px;
   /* overflow: hidden; */
 }
+.res-container > a {
+  text-decoration: none;
+  color: inherit; /* Inherit color from parent */
+}
 
 .res-card {
   width: 230px;
@@ -171,6 +175,7 @@
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   cursor: pointer;
   text-align: center;
+  text-decoration: none;
 }
 
 .res-card:hover {

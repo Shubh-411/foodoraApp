@@ -1,10 +1,12 @@
 import RestaurantCard from "./RestaurantCard";
 import listOfRestaurant from "../utils/mockData";
 import { useState, useEffect } from "react";
+import { Link } from "react-router";
 import Shimmer from "./Shimmer";
-
+// import { swiggy_api_URL } from "../utils/constant";
 const Body = () => {
   const [resData, setResData] = useState([]);
+  const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   // useEffect is a hook that runs after the component is mounted.
@@ -18,8 +20,13 @@ const Body = () => {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=17.38430&lng=78.45830&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
     const json = await data.json();
-    console.log("NEwss", json);
+    // console.log("NEwss", json);
     setResData(
+      json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+
+    // setting the filtered restaurant to the same data
+    setFilteredRestaurant(
       json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
@@ -44,7 +51,7 @@ const Body = () => {
       <div className="filter">
         <div className="search">
           <input
-            type="search"
+            type="text"
             placeholder="Search"
             className="search-box"
             value={searchText}
@@ -52,7 +59,16 @@ const Body = () => {
               setSearchText(e.target.value);
             }}
           />
-          <button className="search-btn" onClick={() => {}}>
+          <button
+            className="search-btn"
+            onClick={() => {
+              const filteredRestaurant = resData.filter((res) =>
+                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              );
+              setFilteredRestaurant(filteredRestaurant);
+              // console.log("Filtered Data", filteredRestaurant);
+            }}
+          >
             Search
           </button>
         </div>
@@ -69,12 +85,14 @@ const Body = () => {
       </div>
       <div className="res-container">
         {/* Restaurant card */}
-        {resData.map((restaurant) => {
+        {filteredRestaurant.map((restaurant) => {
           return (
-            <RestaurantCard
+            <Link
+              to={"/restaurant/" + restaurant.info.id}
               key={restaurant.info.id}
-              resData={restaurant.info}
-            />
+            >
+              <RestaurantCard resData={restaurant.info} />
+            </Link>
           );
         })}
       </div>

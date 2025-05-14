@@ -1,4 +1,4 @@
-import { CDN_URL } from "../utils/constant";
+import { IMAGE_CDN_URL } from "../utils/constant";
 
 const RestaurantCard = ({ resData }) => {
   console.log("card data", resData);
@@ -6,7 +6,7 @@ const RestaurantCard = ({ resData }) => {
   return (
     <div className="res-card">
       <img
-        src={CDN_URL + cloudinaryImageId}
+        src={IMAGE_CDN_URL + cloudinaryImageId}
         alt="Restaurant-logo"
         className="res-logo"
       />

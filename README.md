@@ -100,10 +100,21 @@ Episode : 6
 - Page Loads > API > Render the API Data
 - Page Load > Render UI > API Call > Render the API data // this approach is better and better User experience
 
-# To bypass CORS install CORS plugin
+# To bypass CORS install CORS plugin in Browser
 
 // While loading the if delay is there Showing the #Spinner is not the good way.
 
 # Instead use Shimmer ui - it is basically skeleton or fake ui
 
 # useState : whenever the state state changes it refreshes the component and it trigger the reconciliation cycle
+
+# filterData from API
+
+Episode : 7
+
+# Rounting : Two types of Routing in web apps.
+
+- Client Side Routing : is all the components are already loaded into our app. So we don't make any network calls while moving/changing the page.
+- Server Side Routing : is you make a network call and that about.html page is coming from server.
+
+# useRouteError : to render error message it is react-router provided Hook.
