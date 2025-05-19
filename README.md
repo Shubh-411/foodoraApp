@@ -112,9 +112,75 @@ Episode : 6
 
 Episode : 7
 
-# Rounting : Two types of Routing in web apps.
+# Routing : Two types of Routing in web apps.
 
 - Client Side Routing : is all the components are already loaded into our app. So we don't make any network calls while moving/changing the page.
 - Server Side Routing : is you make a network call and that about.html page is coming from server.
 
 # useRouteError : to render error message it is react-router provided Hook.
+
+Episode: 8
+
+# Class based components
+
+# LifeCycle Methods in Class-Based components
+
+# Order of Lifecycle method
+
+- parent constructor -> parent render (if there is any child component ) -> child constructor -> child render -> child ComponentDidMount -> parent ComponentDidMount
+
+# Why we call API inside useEffect or componentDidMount : because we want to quickly render the component then make API call otherwise component wil not render.
+
+# If Parent component has multiple children, then lifcycle will be:
+
+# Why react is doing that:(For Optimization) react is batching render phase for multiple childrens because when the commit phase starts reacts tries to update the dom. Since DOM-updation is the most expensive for updating a Component
+
+source: https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+{
+
+- Parent Constructor
+- Parent render
+
+  - fisrtChild Constructor
+  - firstChild Render
+
+  - secondChild Constructor
+  - secondChild Render
+    <DOM Updated - In Single batch>
+    -firstChild ComponentDidMount
+    -secondChild ComponentDidMount
+
+- Parent ComponentDidMount
+
+  }
+
+\*
+
+async componentDidMount for API call
+
+- ---------Mounting-------------
+- Constructor
+- Render(dummyData)
+  - <HTML(Dummy)>
+- ComponentDidMount
+
+  - <APICall>
+  - <this.setState -- state variable is updated>
+
+- ------Updating -------------
+- render(Api Data)
+- <HTML(new API data)>
+- ComponentDidUpdate
+
+- ------Unmounting ------------
+- ComponentWillUnmount - it will unmount when we move to other page
+- \*
+
+Episode: 9
+
+# Optimization of App
+
+- use Custom hooks -- it makes the code cleaner, more readable and reusable, modular
+- Chunking or Code Splitting : is basically when we do module bundling if there is 1000+ components then the size of bundleJS file will increase alot and it will slow down the performance of the application.
+  - `So we need to break-down the bundledJS-file into smaller chunks or pieces or bundle  ie. simply Code Splitting or Chunking or Lazy loading or Dynamic Bundling `.
+  - So basically it logically split the website into smaller bundles.

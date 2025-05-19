@@ -3,11 +3,13 @@ import listOfRestaurant from "../utils/mockData";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
 import Shimmer from "./Shimmer";
+import useOnlineStatus from "../utils/useOnlineStatus";
 // import { swiggy_api_URL } from "../utils/constant";
 const Body = () => {
   const [resData, setResData] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const onlineStatus = useOnlineStatus();
 
   // useEffect is a hook that runs after the component is mounted.
   useEffect(() => {
@@ -30,6 +32,16 @@ const Body = () => {
       json.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  if (onlineStatus === false) {
+    return (
+      <div className="body">
+        <h1>
+          Looks like you are offline !!! Please check your internet connection ;
+        </h1>
+      </div>
+    );
+  }
 
   // Conditional rendering ---- Shimmer UI Effect
 
@@ -84,7 +96,7 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {/* Restaurant card */}
+        {/* =================== Restaurant card =================*/}
         {filteredRestaurant.map((restaurant) => {
           return (
             <Link
