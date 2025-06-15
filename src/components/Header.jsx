@@ -1,9 +1,15 @@
 import { LOGO } from "../utils/constant";
 import { Link } from "react-router";
 import useOnlineStatus from "../utils/useOnlineStatus";
-
+import UserContext from "../utils/UserContext";
+import { useContext } from "react";
+import { useSelector } from "react-redux";
 const Header = () => {
   const onlineStatus = useOnlineStatus();
+  // Subscribe to the store using useSelector
+  const cartItems = useSelector((store) => store.cart.items);
+  // const { loggedInUser } = useContext(UserContext); // This will give the default value of loggedInUser
+  // console.log("Header Rendered", loggedInUser);
   //   console.log("Header Rendered", logo);
   return (
     <div className="header">
@@ -20,11 +26,17 @@ const Header = () => {
             <Link to={"/about"}>About Us </Link>
           </li>
           <li>
+            <Link to={"/grocery"}>Grocery</Link>
+          </li>
+          <li>
             <Link to={"/contact"}>Contact Us</Link>
           </li>
           <li>
-            <Link to={"/cart"}>Cart </Link>
+            <Link to={"/cart"}> 🛒 - ({cartItems.length} items) </Link>
           </li>
+          {/* <li>
+            <Link to={"/cart"}>{loggedInUser}</Link>
+          </li> */}
         </ul>
       </nav>
     </div>

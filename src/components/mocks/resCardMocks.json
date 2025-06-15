@@ -1,0 +1,74 @@
+{
+  "id": "10490",
+  "name": "Pizza Hut",
+  "cloudinaryImageId": "RX_THUMBNAIL/IMAGES/VENDOR/2025/5/22/8c8cb132-459e-4c4a-bfdd-3ecf1325cd4c_10490.JPG",
+  "locality": "Banjara Hills",
+  "areaName": "Banjara Hills",
+  "costForTwo": "₹350 for two",
+  "cuisines": ["Pizzas"],
+  "avgRating": 4.2,
+  "parentId": "721",
+  "avgRatingString": "4.2",
+  "totalRatingsString": "29K+",
+  "sla": {
+    "deliveryTime": 32,
+    "lastMileTravel": 4.1,
+    "serviceability": "SERVICEABLE",
+    "slaString": "30-35 mins",
+    "lastMileTravelString": "4.1 km",
+    "iconType": "ICON_TYPE_EMPTY"
+  },
+  "availability": {
+    "nextCloseTime": "2025-05-27 01:00:00",
+    "opened": true
+  },
+  "badges": {
+    "imageBadges": [
+      {
+        "imageId": "Rxawards/_CATEGORY-Pizza.png",
+        "description": "Delivery!"
+      }
+    ]
+  },
+  "isOpen": true,
+  "type": "F",
+  "badgesV2": {
+    "entityBadges": {
+      "imageBased": {
+        "badgeObject": [
+          {
+            "attributes": {
+              "description": "Delivery!",
+              "imageId": "Rxawards/_CATEGORY-Pizza.png"
+            }
+          }
+        ]
+      },
+      "textBased": {},
+      "textExtendedBadges": {}
+    }
+  },
+  "aggregatedDiscountInfoV3": {
+    "header": "50% OFF",
+    "subHeader": "UPTO ₹100"
+  },
+  "differentiatedUi": {
+    "displayType": "ADS_UI_DISPLAY_TYPE_ENUM_DEFAULT",
+    "differentiatedUiMediaDetails": {
+      "lottie": {},
+      "video": {}
+    }
+  },
+  "reviewsSummary": {},
+  "displayType": "RESTAURANT_DISPLAY_TYPE_DEFAULT",
+  "restaurantOfferPresentationInfo": {},
+  "externalRatings": {
+    "aggregatedRating": {
+      "rating": "4.0",
+      "ratingCount": "3.6K+"
+    },
+    "source": "GOOGLE",
+    "sourceIconImageId": "v1704440323/google_ratings/rating_google_tag"
+  },
+  "ratingsDisplayPreference": "RATINGS_DISPLAY_PREFERENCE_SHOW_SWIGGY"
+}

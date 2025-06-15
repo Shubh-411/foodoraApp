@@ -180,7 +180,143 @@ Episode: 9
 
 # Optimization of App
 
-- use Custom hooks -- it makes the code cleaner, more readable and reusable, modular
-- Chunking or Code Splitting : is basically when we do module bundling if there is 1000+ components then the size of bundleJS file will increase alot and it will slow down the performance of the application.
+- # use Custom hooks -- it makes the code cleaner, more readable and reusable, modular
+- # Chunking or Code Splitting : is basically when we do module bundling if there is 1000+ components then the size of bundleJS file will increase alot and it will slow down the performance of the application.
   - `So we need to break-down the bundledJS-file into smaller chunks or pieces or bundle  ie. simply Code Splitting or Chunking or Lazy loading or Dynamic Bundling `.
-  - So basically it logically split the website into smaller bundles.
+  - So basically it logically split the website into smaller bundles and don't put all the load on Single bundle.
+- # Lazy Loading or On Demand loading
+
+Episode: 10
+
+# Stying:
+
+- CSS
+- SCSS or Sass
+- styled-components
+- Material UI or Ant Design or Chakra UI or Bootstrap
+- Tailwind-CSS
+
+Episode: 11
+
+# HOC :
+
+# UI/Data layer: UI layer is powered by Data Layer. Data layer is state,props and local variables. UI layer is JSX.
+
+# Accordion for Restaurant menu categories
+
+# Lifting the state up
+
+# Controlled and Uncontrolled Component
+
+# useContext :
+
+- createContext
+- If functionComponent : use hooks --> useContext()
+- if ClassComponent : use <UserContext.Consumer>{(data)=> }</UserContext.Consumer>
+- if want to change the value of context : <UserContext.Provider value={}></UserContext.Provider>
+
+Episode : 12
+
+- Redux works in data layer
+
+# Redux Toolkit:
+
+- Slices: are there because the Store data should not become big. We can create multiple Slice inside store :- >user slice >cart slice
+
+- To write data: `add btn --> dispatch() --> action --> call a reducer function --> modifies the (cart)slice of redux store --> slice will be updated`
+- To Read data: `selector is used to read the data from the store and Selector will modify the ReactComponent and this phenomenon is known as "Subscribing to the Store" basically Components are subscribed to the store using a selector`
+
+- Install @reduxjs/toolkit and react-redux
+- Build our Store --- configureStore() from "@reduxjs/toolkit"
+- Connect Store to the App --- Provider from "react-redux"
+- Create the Slice (cartSlice) --- cartSlice.js -- createSlice() from "@reduxjs/toolkit"
+- dispatch(action)
+
+⭐ `Always subscribe to the right or specific portion of the store ===>  const cartItems = useSelector((store) => store.cart.items);`
+
+⭐ In appStore there is only one big "reducer" and in cartSlice there is small "reducers" and export cartSlice.reducer mind it - singular: reducer /plural : reducers !!!
+
+⭐ In Vanilla-Redux(Older react-redux) ==> DON'T MUTATE STATE (state mutation was prohibited) and returning the newState was mandatory.
+⭐ But in RTK we're directly mutating the STATE and also WE HAVE TO MUTATE THE STATE DIRECTLY and returning is not Mandatory.
+⭐ Redux-Toolkit internally uses ImmerJS-library which helps with immutable state based on copy-on-write mechanism.
+
+Episode : 13
+
+# Types of testing - (Developer) :
+
+# Unit Testing : Test your React Component in Isolation.
+
+- `Integration Testing : Testing the integration of the Components, When there is integration of so many components and talk to each other, Ex: click event input changing`
+- End to End Testing : E2E Testing is as soon as the user lands on the website, to the user leaves the website. Here we test all the flows. It requires different type of tools, like : Cypress, Puppteer and Selenium
+
+For testing : We're using `React Testing Library` and it uses JEST library
+-- Library:
+
+- npm install --save-dev @testing-library/react @testing-library/dom
+- npm install --save-dev jest
+- npm install --save-dev babel-jest @babel/core @babel/preset-env
+- Rest configuration from jest --> babel.config.mjs --> https://jestjs.io/docs/getting-started#using-babel
+- npm run test : to run our all test cases
+- npx jest --init
+- npm install --save-dev jest-environment-jsdom
+
+SO, basically
+
+- Install react testing library
+- Install Jest
+- Install babel dependencies
+- Configure Babel from jest documentaton : (https://jestjs.io/docs/getting-started)
+- Since default babel will cause issue with new configuration we need to disable parcel's default babel
+- Configure Parcel config file to disable default babel transpilation : https://parceljs.org/languages/javascript/#babel
+- npm run test : to run our all test cases
+- Jest configuration
+- npx jest --init
+- Install JS-DOM libray : npm install --save-dev jest-environment-jsdom
+- Install to make JSX works in test cases : "npm i -D @babel/preset-react"
+- Also add configuration to babel.config.mjs: `["@babel/preset-react", { runtime: "automatic" }],`
+- Install: npm i -D @testing-library/jest-dom
+  => JS-DOM: When you running test cases there is no sever running or there's no browser, So they need Environment to run where testing code will be executed. So for that JS-Dom is used and it is like a browser.y
+
+: Header.test.js
+: Header.test.ts
+: Header.spec.ts
+: Header.spect.ts
+also we can have folder `__test__/ sum.test.js (__ double under score is known as dunder method)`
+
+`For testing test("", () =>{}), test is the function and it takes 2 argument first is string for description and second for testing function`
+
+1. For react testing : Component loading testing we need `import {render, screen } from @testing-library/react`
+   -- `test()` and we can name as `it()` as well
+   -- screen.getByRole("heading") ==> any button role inside rendered component
+   -- screen.getByText("Submit") ==> any Submit text inside rendered component
+   -- screen.getAllByRole("textbox") ==> This will select all input fields, for input "textbox" is the role
+
+2. Group of Test cases:
+   -- describe() ==> is used to group multiple test cases into single block
+3. Jest doesn't understand Redux: So we need to provide the store to Jest also. Because JS-DOM understands React, JSX, JavaScript code, but it doesn't understand Redux code.
+4. For click event = use `fireEvent.click(loginButton)`;
+
+# Integration Testing
+
+- global.fetch() for mock data for the fetch call and asynchronous operations
+- Whenever we use fetch or do any state updates wrap the render method inside `act()`
+- act() comes from -- import {act} from "react-dom/test-utils"
+- also we need to await the act() function and make test case call back async :
+- `Inside describe() we can add these below methods:`
+  describe(
+  beforeAll(() => {
+  console.log("Before All the test function this will get called");
+  });
+
+beforeEach(() => {
+console.log("Before each test it will run");
+});
+
+afterAll(() => {
+console.log("it will run afterAll");
+});
+
+afterEach(() => {
+console.log("it will run after each");
+});
+)

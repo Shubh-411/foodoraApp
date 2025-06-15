@@ -25,6 +25,11 @@
   padding: 0;
 }
 
+.nav-items > ul > li > a {
+  color: inherit;
+  text-decoration: none;
+}
+
 .nav-items > ul > li {
   font-size: 24px;
   margin: 0 15px;
@@ -57,10 +62,10 @@
 /* body */
 
 /* =================newCard */
-/* .body {
+.body {
   background-color: #f4f4f4;
   box-sizing: border-box;
-} */
+}
 
 /* Filter section layout */
 .filter {
@@ -122,46 +127,35 @@
   transform: scale(0.98);
 }
 
-/* Old */
-/* .filter {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 20px;
-  gap: 20px;
-}
-
-.filter > .filter-btn {
-  margin-top: 10px;
-  padding: 5px 8px;
-  background-color: #e4833e;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 15px;
-  font-weight: bold;
-  width: 150px;
-} */
-
 .res-container {
   margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-start; /* Align top for even layout */
+  align-items: flex-start;
   padding: 10px 60px;
   background-color: #f4f4f4;
   gap: 30px;
-  /* overflow: hidden; */
 }
 .res-container > a {
   text-decoration: none;
-  color: inherit; /* Inherit color from parent */
+  color: inherit;
+}
+
+.promote {
+  position: absolute;
+  padding: 5px 10px;
+  border-radius: 10px 0;
+  /* top: 10px; */
+  z-index: 29;
+  background-color: #ff934b;
+  margin: 5px;
+  color: black;
+  font-weight: 600;
 }
 
 .res-card {
   width: 230px;
-  height: 350px; /* Fixed height */
+  height: 350px;
   background-color: #fff;
   border-radius: 12px;
   overflow: hidden;
@@ -181,15 +175,12 @@
 .res-card:hover {
   transform: translateY(-5px);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
-  /* transition: transform 0.3s ease; */
-  /* transform: scale(0.95); */
 }
 
 .res-logo {
   width: 100%;
   height: 180px;
   object-fit: cover;
-  /* margin-bottom: 10px; */
 }
 
 .res-card h3,
@@ -197,6 +188,221 @@
   margin: 4px 0;
   font-size: 18px;
 }
+
+/* Restaurant menu and category */
+/* Container for the whole menu */
+.menu {
+  max-width: 720px;
+  margin: 40px auto;
+  padding: 24px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Restaurant heading and details */
+.res-name {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #333;
+}
+
+.res-cuisine,
+.res-price {
+  font-size: 1rem;
+  color: #666;
+  margin-bottom: 4px;
+}
+/* Accordion container */
+.category {
+  margin: 20px 0;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  background-color: #fdfdfd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  overflow: hidden;
+}
+
+/* Accordion header */
+.category-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  cursor: pointer;
+  background-color: #f7f7f7;
+  font-weight: 600;
+  font-size: 1.05rem;
+  transition: background 0.2s;
+  cursor: pointer;
+}
+
+.category-header:hover {
+  background-color: #eaeaea;
+}
+
+/* Accordion body (ItemList container) */
+.category-body {
+  padding: 16px 20px;
+  border-top: 1px solid #eee;
+  background-color: #fff;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Each item row in ItemList */
+.category-body .item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 20px 0;
+  border-bottom: 1px solid #f1f1f1;
+  gap: 16px;
+}
+
+.category-body .item-row:last-child {
+  border-bottom: none;
+}
+
+/* Left section: text content */
+.category-body .item-header {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.category-body .item-header span:first-of-type {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.category-body .item-header span:last-of-type {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: #444;
+}
+
+.category-body .item-description {
+  font-size: 0.88rem;
+  color: #666;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+/* Right section: image */
+.category-body .item-row img {
+  width: 130px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 10px;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+.add-btn {
+  margin-top: 8px;
+  align-self: flex-start;
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  background-color: #ffffff;
+  border: 1px solid #ff4d00;
+  color: #ff4d00;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.add-btn:hover {
+  background-color: #ff4d00;
+  color: #fff;
+}
+
+/* Cart container */
+.cart-container {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 24px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+/* Cart title */
+.cart-container h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 10px;
+}
+
+/* If you're using ItemList inside, reuse your existing styles */
+.cart-container .item-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 0;
+  border-bottom: 1px solid #eaeaea;
+}
+
+.cart-container .item-row:last-child {
+  border-bottom: none;
+}
+
+/* Item image */
+.cart-container img {
+  width: 120px;
+  height: 90px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+/* Item name and price */
+.cart-container .item-header {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cart-container .item-header span:first-child {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.cart-container .item-header span:last-child {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #444;
+}
+
+/* Item description */
+.cart-container .item-description {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* restaurant menu category */
 
 /* =====================Old below*/
 
@@ -233,7 +439,7 @@
 } */
 
 /* Loader */
-.loading {
+/* .loading {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -279,9 +485,9 @@
 }
 .loading h1 span:nth-child(9) {
   animation-delay: 0.8s;
-}
+} */
 
-@keyframes wave {
+/* @keyframes wave {
   0%,
   60%,
   100% {
@@ -290,7 +496,7 @@
   30% {
     transform: translateY(-10px);
   }
-}
+} */
 
 /* Shimmer UI */
 .shimmer-container {

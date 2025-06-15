@@ -1,4 +1,4 @@
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import listOfRestaurant from "../utils/mockData";
 import { useState, useEffect } from "react";
 import { Link } from "react-router";
@@ -11,7 +11,10 @@ const Body = () => {
   const [searchText, setSearchText] = useState("");
   const onlineStatus = useOnlineStatus();
 
+  const PromotedRestaurantCard = withPromotedLabel(RestaurantCard);
+
   // useEffect is a hook that runs after the component is mounted.
+  // console.log("Body Rendered", resData);
   useEffect(() => {
     // console.log("useEffect called");
     fetchData();
@@ -35,7 +38,7 @@ const Body = () => {
 
   if (onlineStatus === false) {
     return (
-      <div className="body">
+      <div className="body flex">
         <h1>
           Looks like you are offline !!! Please check your internet connection ;
         </h1>
@@ -64,6 +67,7 @@ const Body = () => {
         <div className="search">
           <input
             type="text"
+            data-testid="search-input"
             placeholder="Search"
             className="search-box"
             value={searchText}
@@ -87,8 +91,9 @@ const Body = () => {
         <button
           className="filter-btn"
           onClick={() => {
-            let topRated = resData.filter((res) => res.info.avgRating > 4);
-            setResData(topRated);
+            let topRated = resData.filter((res) => res.info.avgRating > 4.3);
+            // setResData(topRated);
+            setFilteredRestaurant(topRated);
             console.log("Top Rated", topRated);
           }}
         >
@@ -103,7 +108,12 @@ const Body = () => {
               to={"/restaurant/" + restaurant.info.id}
               key={restaurant.info.id}
             >
-              <RestaurantCard resData={restaurant.info} />
+              {/* If the restaurant is promoted, then add a Promoted label to it. */}
+              {restaurant.info.avgRating > 4.3 ? (
+                <PromotedRestaurantCard resData={restaurant.info} />
+              ) : (
+                <RestaurantCard resData={restaurant.info} />
+              )}
             </Link>
           );
         })}

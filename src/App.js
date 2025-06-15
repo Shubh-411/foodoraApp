@@ -1,4 +1,4 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
 import Body from "./components/Body";
 import Header from "./components/Header";
@@ -7,10 +7,16 @@ import About from "./components/About";
 import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestaurantMenu from "./components/RestaurantMenu";
+import UserContext from "./utils/UserContext";
+import { Provider } from "react-redux";
+import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
+// import Grocery from "./components/Grocery";
 // import logo from "./assets/foodoraLogo.png";
 
-const resImg =
-  "https://media-assets.swiggy.com/swiggy/image/upload/fl_lossy,f_auto,q_auto,w_660/";
+// Lazy loading
+const Grocery = lazy(() => import("./components/Grocery"));
+
 /**
  ------------Food Delivery App Structure------------
  * Header
@@ -37,14 +43,21 @@ const resImg =
 const Footer = () => {};
 
 const AppLayout = () => {
+  const { loggedInUser } = React.useContext(UserContext);
   return (
-    <div className="app">
-      <Header />
-      {/* <Body />
+    // If you want to change the default value of UserContext, then only use the UserContext.Provider.
+    // If you want to change the value of loggedInUser, then you can use a state variable and set it using setLoggedInUser.
+    // <UserContext.Provider value={{ loggedInUser: "Shubham" }}>
+    <Provider store={appStore}>
+      <div className="app">
+        <Header />
+        {/* <Body />
       <Footer /> */}
-      {/* Outlet is for Children Routes */}
-      <Outlet />
-    </div>
+        {/* Outlet is for Children Routes */}
+        <Outlet />
+      </div>
+    </Provider>
+    // </UserContext.Provider>
   );
 };
 
@@ -64,6 +77,18 @@ const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/grocery",
+        element: (
+          <Suspense fallback={<h1>Loading...</h1>}>
+            <Grocery />
+          </Suspense>
+        ),
       },
       {
         path: "/restaurant/:resId",

@@ -11,8 +11,8 @@ export const swiggy_api_URL =
 
 // "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
 
-export const LOGO = new URL("../../public/foodoraApp.png", import.meta.url);
-
+//  const Logo = new URL("../../public/foodoraApp.png", import.meta.url);
+export const LOGO = "../../public/foodoraApp.png";
 // MENU API
 
 export const MENU_API_URL =
